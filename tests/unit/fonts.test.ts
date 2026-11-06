@@ -26,10 +26,15 @@ describe('local font listing', () => {
     expect(fonts).toContain('Noto Sans CJK SC')
   })
 
-  it('includes Noto on this machine via real fc-list', () => {
+  it('enumerates real fonts on this machine and only exposes allowed families', () => {
     const fonts = listLocalFonts()
-    expect(fonts).toContain('Noto Sans CJK SC')
     expect(fonts.length).toBeGreaterThan(0)
+    for (const family of fonts) {
+      expect(isAllowedFontFamily(family)).toBe(true)
+    }
+    // 中文字体只保证「装了就能被选出来」，不强求每台机器都装：
+    // CI 的 ubuntu-latest 只有 DejaVu/Liberation，中文桌面才有 Noto。
+    expect(isAllowedFontFamily(defaultFontForList(fonts))).toBe(true)
   })
 
   it('rejects unknown families and falls back to the default', () => {
