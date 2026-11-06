@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="QuickAsk test tray icon">
+  <!-- Distinctive spike icon: solid magenta rounded square + cyan inner frame + white QA.
+       The solid magenta area is intentionally large so a panel screenshot can be
+       searched deterministically by PIL colour matching. -->
+  <rect x="8" y="8" width="496" height="496" rx="104" ry="104" fill="#ff00cc"/>
+  <rect x="48" y="48" width="416" height="416" rx="68" ry="68" fill="#00e5ff"/>
+  <rect x="76" y="76" width="360" height="360" rx="44" ry="44" fill="#ff00cc"/>
+  <text x="256" y="345" font-family="DejaVu Sans, Liberation Sans, sans-serif" font-size="250" font-weight="700" text-anchor="middle" fill="#ffffff">QA</text>
+</svg>

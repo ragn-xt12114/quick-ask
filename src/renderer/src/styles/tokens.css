@@ -1,0 +1,398 @@
+/**
+ * QuickAsk design tokens — REQUIREMENTS.md §3.3, §3.5, §3.6, §3.10.
+ *
+ * Rules:
+ * - Components MUST reference these variables; no component-local hex/px
+ *   values for geometry, color, radius, font size or spacing.
+ * - Spacing uses only the 2/4/8/12/16/24 scale. Values that are fixed by the
+ *   spec but outside the scale (e.g. the 6px bar right padding, 10×14 bubble
+ *   padding) are declared here as explicit tokens, never inline in a component.
+ * - Dark is the default. `[data-theme='light']` is the light equivalent.
+ * - Six primary presets are plain CSS classes usable on <html>/<body>/#root.
+ * - System fonts only: no embedded font faces and no remote font URLs.
+ */
+
+:root {
+  color-scheme: dark;
+
+  /* ------------------------------------------------------------------ */
+  /* Geometry — §3.3                                                     */
+  /* ------------------------------------------------------------------ */
+  --w: 680px;
+  --bar-width: var(--w);
+  --bar-h: 48px;
+  --r-bar: 24px;
+  --r-card: 16px;
+  --gap: 12px;
+  --sidebar-w: 260px;
+  --panel-min-h: 120px;
+  --panel-max-h: min(560px, 60vh);
+  --pad: 16px;
+  --icon-btn: 32px;
+  --icon-size: 18px;
+  --send-btn: 36px;
+  --send-icon: 16px;
+
+  /* Spacing scale — only 2 / 4 / 8 / 12 / 16 / 24 are allowed. */
+  --space-2: 2px;
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-24: 24px;
+
+  /* ------------------------------------------------------------------ */
+  /* Component geometry fixed by §3.4–§3.6 (declared, not inline)        */
+  /* ------------------------------------------------------------------ */
+  --border-w: 1px;
+  --bar-pad-left: var(--space-8);
+  --bar-pad-right: 6px;
+  --bar-btn-gap: var(--space-2);
+  --divider-w: 1px;
+  --divider-h: 20px;
+  --divider-margin: var(--space-8);
+  --composer-min-w: 240px;
+  --composer-pad-x: var(--space-12);
+  --composer-pad-y: var(--space-12);
+  --composer-line-h: 24px;
+  --composer-scrollbar-w: 6px;
+  --clipboard-chip-h: 24px;
+  --clipboard-chip-max-w: 260px;
+  --clipboard-chip-pad-x: var(--space-8);
+  --clipboard-chip-gap: var(--space-4);
+  --clipboard-chip-margin-right: var(--space-8);
+  --composer-notice-offset: var(--space-4);
+  --composer-notice-pad-y: var(--space-4);
+  --composer-notice-pad-x: var(--space-12);
+  --composer-notice-max-w: calc(100% - var(--space-24));
+  --info-row-h: 28px;
+  --user-max-w: 78%;
+  --bubble-pad-y: 10px;
+  --bubble-pad-x: 14px;
+  --r-bubble: 12px;
+  --r-bubble-tail: 4px;
+  --r-input: 8px;
+  --r-item: 8px;
+  --r-code: 8px;
+  --r-copy: 4px;
+  --title-row-h: 32px;
+  --search-h: 36px;
+  --group-row-h: 24px;
+  --item-h: 48px;
+  --item-pad-left: 10px;
+  --item-pad-right: var(--space-8);
+  --item-marker-w: 2px;
+  --footer-h: 32px;
+  --scrollbar-w: 6px;
+  --icon-btn-sm: 24px;
+  --icon-size-sm: 14px;
+  --tooltip-size: 11px;
+  --code-pad: var(--space-12);
+  --code-copy-inset: var(--space-8);
+  --empty-size: 12px;
+  --messages-gap-same: var(--space-8);
+  --messages-gap-change: var(--space-16);
+  --msg-status-gap: var(--space-8);
+  --msg-status-size: var(--fs-secondary);
+  --msg-actions-gap: var(--space-8);
+  --msg-action-h: var(--icon-btn-sm);
+  --msg-action-pad-x: var(--space-8);
+  --scroll-fade-size: 12px;
+  --mask-opaque: black;
+  --md-block-gap: var(--space-8);
+  --md-list-indent: var(--space-24);
+  --md-list-gap: var(--space-2);
+  --md-quote-border: var(--space-2);
+  --md-quote-pad: var(--space-12);
+  --md-inline-code-pad: var(--space-4);
+  --md-heading-1: 17px;
+  --md-heading-2: 16px;
+  --md-heading-3: 15px;
+  --md-heading-4: var(--fs-body);
+  --sidebar-search-gap: var(--space-8);
+  --sidebar-group-gap: var(--space-12);
+  --footer-gap: var(--space-8);
+
+  /* History sidebar (Task 20) — fixed geometry outside the 2/4/8 scale */
+  --history-menu-min-w: 120px;
+  --history-menu-row-h: 32px;
+  --history-menu-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  --history-confirm-w: 200px;
+  --history-confirm-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  --history-confirm-btn-h: 24px;
+  --history-confirm-btn-pad-x: var(--space-8);
+  --history-input-h: 24px;
+  --history-empty-min-h: 120px;
+  --history-popover-z: 40;
+  --history-menu-item-hover: var(--hover-bg);
+  --history-menu-item-danger: var(--error-fg);
+  --history-empty-color: var(--text-3);
+
+  /* Clipboard image attachments (same rendered values as the original rules) */
+  --attachment-chip-size: 44px;
+  --attachment-chip-radius: calc(var(--r-input) - 4px);
+  --attachment-remove-size: 16px;
+  --attachment-remove-radius: 6px;
+  --attachment-remove-bg: rgba(0, 0, 0, 0.62);
+  --attachment-remove-bg-hover: rgba(0, 0, 0, 0.85);
+  --attachment-remove-fg: #ffffff;
+  --attachment-remove-font: 12px;
+  --attachment-remove-line: 16px;
+  --attachment-max-size: 180px;
+  --notice-radius: var(--space-8);
+  --notice-pad-y: var(--space-4);
+  --notice-pad-x: var(--space-8);
+  --notice-pad-left: 10px;
+  --notice-top: 3px;
+  --notice-inset: 80px;
+  --notice-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+  --notice-error-bg: rgba(185, 48, 48, 0.96);
+  --notice-warning-bg: rgba(166, 112, 20, 0.96);
+  --notice-info-bg: rgba(38, 92, 170, 0.96);
+  --notice-fg: #ffffff;
+  --settings-nav-w: 160px;
+  --settings-row-h: 40px;
+  --settings-nav-item-h: 36px;
+  --settings-label-w: 120px;
+  --settings-content-pad: var(--space-24);
+  --settings-footer-h: 56px;
+  --settings-form-gap: var(--space-12);
+  --settings-model-list-w: 200px;
+  --settings-input-h: 32px;
+  --settings-range-w: 220px;
+  --settings-swatch: 32px;
+  --settings-swatch-dot: 12px;
+  --settings-radius: var(--space-8);
+  --settings-preview-h: 80px;
+  --settings-step-h: 28px;
+  --settings-step-connector: var(--space-8);
+  --settings-danger-bg: var(--error-bg);
+  --settings-field-bg: var(--search-bg);
+  --settings-field-border: var(--divider-bg);
+  --settings-field-focus: var(--primary);
+  --settings-textarea-min-h: 96px;
+  --settings-success-fg: #a7c080;
+  --settings-scrollbar-w: 6px;
+  --settings-value-w: 56px;
+  --settings-header-name-w: 160px;
+  --settings-radio-dot: 14px;
+  --model-switch-h: 22px;
+  --model-menu-min-w: 180px;
+  --model-menu-max-w: 280px;
+
+  /* ------------------------------------------------------------------ */
+  /* Typography — §3.3 / §3.10                                           */
+  /* ------------------------------------------------------------------ */
+  --font-ui: 'Noto Sans CJK SC', 'Noto Sans SC', 'Source Han Sans SC', sans-serif;
+  --font-mono: 'LXGW WenKai Mono', 'Noto Sans Mono CJK SC', monospace;
+  --fs-body: 14px;
+  --fs-input: 15px;
+  --fs-title: 13px;
+  --fs-title-lg: 14px;
+  --fs-secondary: 12px;
+  --fs-time: 11px;
+  --fs-code: 13px;
+  --lh-body: 1.7;
+  --lh-tight: 1.35;
+  --lh-user: 1.5;
+  --weight-title: 600;
+
+  /* ------------------------------------------------------------------ */
+  /* Dark colors (default) — §3.10                                       */
+  /* ------------------------------------------------------------------ */
+  --card-bg-rgb: 24, 26, 28;
+  --card-alpha: 0.72;
+  --card-bg: rgba(var(--card-bg-rgb), var(--card-alpha));
+  --card-border: rgba(255, 255, 255, 0.1);
+  --card-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+  --text-1: rgba(255, 255, 255, 0.92);
+  --text-2: rgba(255, 255, 255, 0.62);
+  --text-3: rgba(255, 255, 255, 0.4);
+  --primary: #7fbbb3;
+  --primary-12: rgba(127, 187, 179, 0.12);
+  --on-primary: #101416;
+  --bg-opaque: #1c1e20;
+  --hover-bg: rgba(255, 255, 255, 0.08);
+  --hover-bg-subtle: rgba(255, 255, 255, 0.04);
+  --divider-bg: rgba(255, 255, 255, 0.14);
+  --search-bg: rgba(0, 0, 0, 0.2);
+  --code-bg: rgba(0, 0, 0, 0.28);
+  --code-copy-bg: rgba(255, 255, 255, 0.1);
+  --table-border: rgba(255, 255, 255, 0.08);
+  --table-head-bg: rgba(255, 255, 255, 0.04);
+  --error-bg: rgba(224, 108, 117, 0.12);
+  --error-fg: #e06c75;
+  --visual-backdrop: #2b2f36;
+  --hljs-comment: rgba(255, 255, 255, 0.36);
+  --hljs-keyword: #e67e80;
+  --hljs-string: #a7c080;
+  --hljs-number: #d699b6;
+  --hljs-literal: #e69875;
+  --hljs-title: #7fbbb3;
+  --hljs-attr: #dbbc7f;
+  --hljs-builtin: #83c092;
+  --hljs-meta: #d699b6;
+
+  /* ------------------------------------------------------------------ */
+  /* Motion — §3.9                                                       */
+  /* ------------------------------------------------------------------ */
+  --motion-fast: 120ms;
+  --motion-panel: 160ms;
+  --motion-collapse: 120ms;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --scrollbar-thumb: rgba(255, 255, 255, 0.28);
+}
+
+/* -------------------------------------------------------------------- */
+/* Primary presets — Everforest aqua is the default, five alternatives.  */
+/* Task 23 wires settings; these are static tokens only.                 */
+/* -------------------------------------------------------------------- */
+.primary-everforest,
+[data-primary='everforest'] {
+  --primary: #7fbbb3;
+  --primary-12: rgba(127, 187, 179, 0.12);
+}
+
+.primary-nord,
+[data-primary='nord'] {
+  --primary: #88c0d0;
+  --primary-12: rgba(136, 192, 208, 0.12);
+}
+
+.primary-kanagawa,
+[data-primary='kanagawa'] {
+  --primary: #7e9cd8;
+  --primary-12: rgba(126, 156, 216, 0.12);
+}
+
+.primary-gruvbox,
+[data-primary='gruvbox'] {
+  --primary: #b8bb26;
+  --primary-12: rgba(184, 187, 38, 0.12);
+}
+
+.primary-solarized,
+[data-primary='solarized'] {
+  --primary: #268bd2;
+  --primary-12: rgba(38, 139, 210, 0.12);
+}
+
+.primary-catppuccin,
+[data-primary='catppuccin'] {
+  --primary: #c6a0f6;
+  --primary-12: rgba(198, 160, 246, 0.12);
+}
+
+/* -------------------------------------------------------------------- */
+/* Light theme equivalents — §3.10                                       */
+/* -------------------------------------------------------------------- */
+[data-theme='light'] {
+  color-scheme: light;
+  --card-bg-rgb: 250, 250, 248;
+  --card-alpha: 0.78;
+  --card-bg: rgba(var(--card-bg-rgb), var(--card-alpha));
+  --card-border: rgba(0, 0, 0, 0.08);
+  --settings-success-fg: #2f6f6a;
+  --card-shadow: 0 8px 28px rgba(0, 0, 0, 0.16);
+  --text-1: rgba(0, 0, 0, 0.88);
+  --text-2: rgba(0, 0, 0, 0.6);
+  --text-3: rgba(0, 0, 0, 0.42);
+  --bg-opaque: #fafaf8;
+  --hover-bg: rgba(0, 0, 0, 0.06);
+  --hover-bg-subtle: rgba(0, 0, 0, 0.03);
+  --divider-bg: rgba(0, 0, 0, 0.14);
+  --search-bg: rgba(0, 0, 0, 0.06);
+  --code-bg: rgba(0, 0, 0, 0.06);
+  --code-copy-bg: rgba(0, 0, 0, 0.08);
+  --table-border: rgba(0, 0, 0, 0.1);
+  --table-head-bg: rgba(0, 0, 0, 0.04);
+  --error-bg: rgba(179, 38, 30, 0.1);
+  --error-fg: #b3261e;
+  --scrollbar-thumb: rgba(0, 0, 0, 0.28);
+  --hljs-comment: rgba(0, 0, 0, 0.42);
+  --hljs-keyword: #b24a4a;
+  --hljs-string: #4f7a28;
+  --hljs-number: #8f5fa8;
+  --hljs-literal: #a45b2a;
+  --hljs-title: #2f6f6a;
+  --hljs-attr: #8a6a1f;
+  --hljs-builtin: #3f7a4a;
+  --hljs-meta: #8f5fa8;
+}
+
+/* -------------------------------------------------------------------- */
+/* Deterministic visual-test mode (`?visual=1`) — Task 14               */
+/*                                                                      */
+/* A solid backdrop replaces the transparent desktop so screenshots are  */
+/* byte-stable. This does NOT fake real window transparency; it only    */
+/* removes the desktop from layout baselines.                           */
+/* -------------------------------------------------------------------- */
+[data-visual='1'] {
+  --visual-mode: 1;
+}
+
+/* -------------------------------------------------------------------- */
+/* Compositor-off opaque fallback (Task 23)                             */
+/*                                                                      */
+/* The OS window is the visual bounding box and ShapeBounding clips the  */
+/* 12px gaps. The web root is still painted opaque so no X11 alpha can  */
+/* turn into a black gutter. Card shadows are meaningless without a     */
+/* compositor, so they are removed.                                     */
+/* -------------------------------------------------------------------- */
+html[data-opaque='1'],
+html[data-opaque='1'] body,
+html[data-opaque='1'] #root,
+html[data-opaque='1'] .app-root {
+  background: var(--bg-opaque);
+}
+
+html[data-opaque='1'] {
+  --card-alpha: 1;
+}
+
+html[data-opaque='1'] .qa-card {
+  background: var(--bg-opaque);
+  box-shadow: none;
+}
+
+/* -------------------------------------------------------------------- */
+/* Reduced motion (plan B.9)                                            */
+/* -------------------------------------------------------------------- */
+html[data-reduced-motion='1'] *,
+html[data-reduced-motion='1'] *::before,
+html[data-reduced-motion='1'] *::after {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html *,
+  html *::before,
+  html *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+html[data-visual='1'],
+html[data-visual='1'] body,
+html[data-visual='1'] #root,
+html[data-visual='1'] .app-root {
+  background: var(--visual-backdrop);
+}
+
+html[data-visual='1'] *,
+html[data-visual='1'] *::before,
+html[data-visual='1'] *::after {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+}
+
+html[data-visual='1'] .notice,
+html[data-visual='1'] .click-counter,
+html[data-visual='1'] .debug-meta {
+  display: none !important;
+}

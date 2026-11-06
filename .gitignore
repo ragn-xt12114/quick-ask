@@ -1,0 +1,51 @@
+node_modules/
+.cache/
+release/
+out/
+dist/
+coverage/
+test-results/
+playwright-report/
+.runtime/
+.omo/
+
+*.tsbuildinfo
+.env
+.env.*
+!.env.example
+
+# Local databases (test + runtime)
+*.db
+*.db-wal
+*.db-shm
+*.sqlite
+*.sqlite3
+
+# Large evidence artifacts (reports/indexes stay committable)
+.omo/evidence/**/*.png
+.omo/evidence/**/*.jpg
+.omo/evidence/**/*.jpeg
+.omo/evidence/**/*.mp4
+.omo/evidence/**/*.webm
+.omo/evidence/**/*.raw
+.omo/evidence/**/*.db
+.omo/evidence/**/*.db-wal
+.omo/evidence/**/*.db-shm
+
+# OS / editor noise
+.DS_Store
+*.swp
+
+# Evidence dumps that may capture live credentials (env/secret dumps) — never commit
+.omo/evidence/**/*env*.txt
+.omo/evidence/**/*secret*.txt
+.omo/evidence/**/*token*.txt
+
+# Generated X11 helper probe binaries (built from tools/*.c, never committed)
+/x11-grab-test
+/x11-shape-query
+
+# Python bytecode
+__pycache__/
+*.pyc
+

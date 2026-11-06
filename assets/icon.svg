@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="QuickAsk app icon">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#262b33"/>
+      <stop offset="1" stop-color="#0f1115"/>
+    </linearGradient>
+    <linearGradient id="bubble" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#d9e2ec"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Neutral dark rounded-square tile; no external assets or fonts. -->
+  <rect x="16" y="16" width="480" height="480" rx="112" ry="112" fill="url(#bg)"/>
+  <rect x="17.5" y="17.5" width="477" height="477" rx="110.5" ry="110.5" fill="none" stroke="#3b434e" stroke-width="3"/>
+
+  <!-- Speech bubble -->
+  <path d="M148 132h216c26.5 0 48 21.5 48 48v116c0 26.5-21.5 48-48 48H246l-58 44c-7.7 5.8-18.6 0.3-18.6-9.4V344H148c-26.5 0-48-21.5-48-48V180c0-26.5 21.5-48 48-48z" fill="url(#bubble)"/>
+
+  <!-- Accent bar / quick-answer mark -->
+  <rect x="148" y="186" width="88" height="20" rx="10" fill="#2f6fed"/>
+  <rect x="148" y="228" width="216" height="16" rx="8" fill="#5c6672"/>
+  <rect x="148" y="264" width="160" height="16" rx="8" fill="#8a95a3"/>
+
+  <!-- Small spark, deliberately geometric so it renders identically without fonts. -->
+  <path d="M360 168l9.5 25.5L395 203l-25.5 9.5L360 238l-9.5-25.5L325 203l25.5-9.5z" fill="#2f6fed"/>
+</svg>

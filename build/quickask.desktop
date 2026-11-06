@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=QuickAsk
+Comment=Fast, non-intrusive desktop AI assistant
+Exec=/opt/QuickAsk/quickask %U
+Icon=quickask
+Terminal=false
+Categories=Utility;
+StartupWMClass=quickask
